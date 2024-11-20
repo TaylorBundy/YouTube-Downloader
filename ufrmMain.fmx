@@ -1,0 +1,429 @@
+object frmMain: TfrmMain
+  Left = 0
+  Top = 0
+  BorderIcons = [biSystemMenu, biMinimize]
+  BorderStyle = Single
+  Caption = 'Youtube Downloader'
+  ClientHeight = 570
+  ClientWidth = 918
+  Position = DesktopCenter
+  StyleBook = dmStyles.stylbkRedRock
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnCreate = FormCreate
+  OnClose = FormClose
+  DesignerMasterStyle = 0
+  object statMain: TStatusBar
+    Padding.Left = 5.000000000000000000
+    Padding.Right = 25.000000000000000000
+    Position.Y = 548.000000000000000000
+    ShowSizeGrip = True
+    Size.Width = 918.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    object lytAppVersion: TLayout
+      Align = Right
+      Position.X = 783.000000000000000000
+      Size.Width = 110.000000000000000000
+      Size.Height = 22.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      object lblAppVersionValue: TLabel
+        Align = Right
+        AutoSize = True
+        StyledSettings = [Family, Size, Style]
+        Position.X = 53.000000000000000000
+        Size.Width = 57.000000000000000000
+        Size.Height = 22.000000000000000000
+        Size.PlatformDefault = False
+        TextSettings.FontColor = claLime
+        TextSettings.WordWrap = False
+        Text = '2022.10.30'
+        TabOrder = 0
+        OnResized = OnAppVersionResized
+      end
+      object lblAppVersionHeader: TLabel
+        Align = Right
+        AutoSize = True
+        StyledSettings = [Family, Size, FontColor]
+        Margins.Right = 5.000000000000000000
+        Position.X = 4.000000000000000000
+        Size.Width = 44.000000000000000000
+        Size.Height = 22.000000000000000000
+        Size.PlatformDefault = False
+        TextSettings.Font.StyleExt = {04060000000000000004000000}
+        TextSettings.WordWrap = False
+        Text = 'Version:'
+        TabOrder = 1
+        OnResized = OnAppVersionResized
+      end
+    end
+  end
+  object tlbMain: TToolBar
+    Padding.Left = 5.000000000000000000
+    Padding.Top = 5.000000000000000000
+    Padding.Right = 5.000000000000000000
+    Padding.Bottom = 5.000000000000000000
+    Size.Width = 918.000000000000000000
+    Size.Height = 40.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 2
+    object lblURLHeader: TLabel
+      Align = Left
+      AutoSize = True
+      StyledSettings = [Family, FontColor]
+      Position.X = 5.000000000000000000
+      Position.Y = 5.000000000000000000
+      Size.Width = 33.000000000000000000
+      Size.Height = 30.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.Size = 16.000000000000000000
+      TextSettings.Font.StyleExt = {00060000000000000004000000}
+      TextSettings.WordWrap = False
+      Text = 'URL:'
+      TabOrder = 0
+    end
+    object edtURL: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      Align = Client
+      TabOrder = 1
+      TextSettings.HorzAlign = Center
+      Margins.Left = 5.000000000000000000
+      Margins.Right = 5.000000000000000000
+      Size.Width = 660.000000000000000000
+      Size.Height = 30.000000000000000000
+      Size.PlatformDefault = False
+      TextPrompt = 'Ingrese URL para descargar'
+      object btnClearURL: TClearEditButton
+        CanFocus = False
+        Cursor = crArrow
+        Size.Width = 28.000000000000000000
+        Size.Height = 26.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+        OnClick = btnClearURLClick
+      end
+    end
+    object btnDownloadMP4: TButton
+      Align = Right
+      CanFocus = False
+      Position.X = 813.000000000000000000
+      Position.Y = 5.000000000000000000
+      Size.Width = 100.000000000000000000
+      Size.Height = 30.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 3
+      Text = 'Descargar Video'
+      OnClick = btnDownloadMP4Click
+    end
+    object btnDownloadMP3: TButton
+      Align = Right
+      CanFocus = False
+      Margins.Right = 5.000000000000000000
+      Position.X = 708.000000000000000000
+      Position.Y = 5.000000000000000000
+      Size.Width = 100.000000000000000000
+      Size.Height = 30.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 2
+      Text = 'Descargar Audio'
+      OnClick = btnDownloadMP3Click
+    end
+  end
+  object lblDownloadsHeader: TLabel
+    AutoSize = True
+    StyledSettings = [Family, FontColor]
+    Position.X = 8.000000000000000000
+    Position.Y = 158.000000000000000000
+    Size.Width = 888.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Size = 16.000000000000000000
+    TextSettings.Font.StyleExt = {04060000000100000004000000}
+    TextSettings.HorzAlign = Center
+    Text = 'Descargas:'
+    TabOrder = 3
+  end
+  object lstDownloads: TListBox
+    Margins.Left = 5.000000000000000000
+    Margins.Top = 5.000000000000000000
+    Margins.Right = 5.000000000000000000
+    Margins.Bottom = 5.000000000000000000
+    Position.X = 9.000000000000000000
+    Position.Y = 200.000000000000000000
+    Size.Width = 890.000000000000000000
+    Size.Height = 305.000000000000000000
+    Size.PlatformDefault = False
+    StyleLookup = 'transparentlistboxstyle'
+    TabOrder = 4
+    DisableFocusEffect = True
+    DefaultItemStyles.ItemStyle = ''
+    DefaultItemStyles.GroupHeaderStyle = ''
+    DefaultItemStyles.GroupFooterStyle = ''
+    Viewport.Width = 890.000000000000000000
+    Viewport.Height = 305.000000000000000000
+    object Memo2: TMemo
+      Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+      DataDetectorTypes = []
+      Position.X = 368.000000000000000000
+      Position.Y = 64.000000000000000000
+      Size.Width = 113.000000000000000000
+      Size.Height = 161.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      Viewport.Width = 101.000000000000000000
+      Viewport.Height = 153.000000000000000000
+    end
+  end
+  object Label1: TLabel
+    Position.X = 8.000000000000000000
+    Position.Y = 48.000000000000000000
+    Text = 'Unidad:'
+    TabOrder = 5
+  end
+  object ComboBox1: TComboBox
+    Position.X = 8.000000000000000000
+    Position.Y = 73.000000000000000000
+    Size.Width = 73.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 6
+    OnChange = ComboBox1Change
+    OnClick = ComboBox1Click
+  end
+  object Edit1: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 7
+    Position.X = 8.000000000000000000
+    Position.Y = 128.000000000000000000
+    Size.Width = 577.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    OnChange = Edit1Change
+  end
+  object Timer1: TTimer
+    Enabled = False
+    Interval = 3000
+    OnTimer = Timer1Timer
+    Left = 296
+    Top = 288
+  end
+  object Label2: TLabel
+    Position.X = 88.000000000000000000
+    Position.Y = 48.000000000000000000
+    Text = 'Carpeta:'
+    TabOrder = 9
+  end
+  object ComboBox2: TComboBox
+    Position.X = 89.000000000000000000
+    Position.Y = 73.000000000000000000
+    Size.Width = 208.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 10
+    OnChange = ComboBox2Change
+  end
+  object Label3: TLabel
+    Position.X = 304.000000000000000000
+    Position.Y = 48.000000000000000000
+    Text = 'Destino:'
+    TabOrder = 11
+  end
+  object ComboBox3: TComboBox
+    Position.X = 305.000000000000000000
+    Position.Y = 73.000000000000000000
+    Size.Width = 535.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 12
+    OnChange = ComboBox3Change
+  end
+  object Label4: TLabel
+    Position.X = 8.000000000000000000
+    Position.Y = 103.000000000000000000
+    Text = 'Ruta Destino:'
+    TabOrder = 13
+  end
+  object Label5: TLabel
+    Position.X = 592.000000000000000000
+    Position.Y = 103.000000000000000000
+    Size.Width = 129.000000000000000000
+    Size.Height = 17.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'Formato Seleccionado:'
+    TabOrder = 15
+    object Label6: TLabel
+      Position.X = 136.000000000000000000
+      Text = 'Res'
+      TabOrder = 3
+    end
+  end
+  object Edit2: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 16
+    Position.X = 593.000000000000000000
+    Position.Y = 128.000000000000000000
+    Size.Width = 128.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+  end
+  object Edit3: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 18
+    Position.X = 8.000000000000000000
+    Position.Y = 518.000000000000000000
+    Size.Width = 377.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    Visible = False
+  end
+  object Timer2: TTimer
+    Enabled = False
+    OnTimer = Timer2Timer
+    Left = 145
+    Top = 296
+  end
+  object Button1: TButton
+    Position.X = 809.000000000000000000
+    Position.Y = 125.000000000000000000
+    Size.Width = 50.000000000000000000
+    Size.Height = 25.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 22
+    ParentShowHint = False
+    ShowHint = True
+    OnClick = Button1Click
+    object Image1: TImage
+      Touch.InteractiveGestures = [Zoom]
+      MultiResBitmap.Height = 18
+      MultiResBitmap.Width = 24
+      MultiResBitmap = <
+        item
+          Width = 24
+          Height = 18
+          PNG = {
+            89504E470D0A1A0A0000000D494844520000001800000012080600000041EC1E
+            9E000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
+            03B549444154384FBD544B881C4518FEAAAABBE7BDBA4B7683CCBA8984103611
+            0C3E703D85288B87E041E2C583E66220823773CA25171F072F7A897852825E7C
+            613C89880B9EE22A6C0E8289247126AB999D9DD9D9E9E9E99E7E56F9574D67CC
+            80202AF80DFFD4A3ABBEAFFEAFFF6A867F80CB97CFCF1C9C956FF0CAB159ABB0
+            E02806A7D1E6855EEB6AB1DBF8F6D4732F5D68E64B279812685DB9587166ADFD
+            2C8560055B70C50BB013D8600C4CB291D73CC1B3ED73DCDE07A56C2899220823
+            C8A805DB72471F7ED23D74F6F54B9B399DC19440B87BE95D607446C9082A0DA1
+            B21852C6D4D25807112A3D960940A1DBF15C82B81D24F5A73F7372AA0998BBF9
+            FE0A47F8A28C6326C19E01E775A93766E3CDDCD1278D0D21533447A1FB66CC32
+            430E5A17A5E58DFA23171ECE7927E03295F7718E97B98533824575242E58EC02
+            719F52EF21E9B710F5B6E0EFB4E1753A186CEF60D0EDC3ED7A08434E22020A1C
+            52395773CE297025C50D6ED9D0C18443AD43ADEED31CA796D48560E431850D38
+            B684CD53582C469A026E98E2ADDB37F1DAF64F4F9E5C3BFE76CE3B010F6EDEFE
+            9D330782C804910B235200D7AD1631C25ACCA21024A8C7D4A75052C18D5234CB
+            16A2F9E2DEDA4CF5899C7702BEB87A6E27CA64C01907A774F546A1C948CC0811
+            A1163259998CAC71180162A03DE57209D54A1533B5DA98F52E70FD5794EA06D5
+            219151307D3ACA46136BEB74264644938E3361B4464120CBA4F1BF5AADA056AB
+            9250D990DE0D53A6E1ADF7BEB66DBEAA0F4459536490594A1123A32A9109D53A
+            F575C56469828FB77EC1153182532CA2582DA33C7F0F4AA51252118C1C596BC4
+            7182A1EFA39DB65F311910E575AA3F2A433A0F49DEB1EACF4CC6EFE38E452D8B
+            CA73AE0C7BBE86F282262F428A0C4986D276B8B5BCE935966FF59BCB9DA0B5D7
+            08A4A9DCA28313889D3A9C2EAE7EA16391B190B147DB442276A1805AB56AAC51
+            850C2EDB453FE95145F531187A180C02B8BB43F8A3706C91D7BCB8AA46E20B1F
+            83D29EB919666E28FDA424ABE81265E9D81E49B73B23ABBEFCF1677CB5B5894C
+            D02D9EE3D877E201C46102CF1DFEDA69F7DE0C82104110204C934FA73E15E75F
+            7D76E18553CFDFCF845A762CB9542AA87A12FA4784508B095A4B1571AF2DE993
+            E17B3E3A3B0364498C66E462EDD111023F84DBF7D63F5FF9EEF19CCE604AE0EF
+            F0C13BA70F1C796871A956720ED82C3A685B72FFB55EF7F0478B8D073D6D8BE7
+            AE7FF3D4C6BF17F82B1C5B3B7C744F6561834E4F02C3EF7F38796D257F64F09F
+            053456371E3BEAF77DA488BBEBC7AFFF964FFF1F00FE00C685C736BAD5333000
+            00000049454E44AE426082}
+          FileName = 
+            'E:\Datos de usuario\Documents\Embarcadero\Studio\Projects\YouTub' +
+            'e\Resources\open.ico'
+        end
+        item
+          Scale = 1.019999980926514000
+          Width = 24
+          Height = 18
+          PNG = {
+            89504E470D0A1A0A0000000D494844520000001800000012080600000041EC1E
+            9E000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
+            031349444154384F95544B48545118FEEFBDE3BD39D38CA3D288899285500641
+            A14B2110DA1419846199BB701D6E5A461B5B44D4A2071585050541488B162D6A
+            5310612E8244D0127B383AEAA83339AFFB38E7F4FFE79E99941905BFE19FFB38
+            DCEFFBCEF79F7334D80285F8C81DC3E041D0ABF0C900D0B0742CD0E5B8C0E2F8
+            A33BCE3D263CFE28D4D83F260737604B81FCC2F335CBF4A2A007F00949352A03
+            E9342CA24762C1F0C2209972BCDAA075B9BAE1C25DF9F106F8762A02B535D257
+            1E9053084EB49254080FAF1E08EEE23B86B31015CD6E2F2087C9B1EF5A3A97E4
+            581CC91909608103DC75762A40A68BE4748F8533E05C91637172CF1C1C73710E
+            1857056C2F801151C97B8C869CCB58842BC941A073EE0B000A56C29602B43E90
+            89FEF0E7C74224A568889C11B12FE071BEB3888A91F879AB58A473244672E161
+            3CDCC6A226A390B7C31ED01294255D131992A363794FB913393ECB3E88048EE5
+            D5979B5126B0F4E476DBEA835BA745CE0EF8CD24026C62C186FC621AF2C99412
+            F00B50C44D30DDF1ECF6F8C4D516455342998093CAF538A9E511EFFDCC6E7B3A
+            8EB1DB60CF2EC1EA8759F81B5F0561626C445E9C0D56B03AAC07CDDC602000C3
+            8AA6843281647CE57E3AB17871616C3C9FBE390AF3CF3EC2F7876F416BAD82BA
+            4311B04CEC8D22A666CB8870A686D90255A10EDAF69B50B13184B9AFD7D71237
+            46A3D92F53B0EFF120D4354764C34B2B49EE622A06EB191DA27BDA01CCB69735
+            4DDD7D8A42A262932707CED4AFBC18D3353C7B62035D5078350E6E26A79A4AD9
+            17E3C1B54F57B5DA70AD2986FF281398E8ED3579E2D790FBE673287CEE0834F6
+            1D03B3A309329F7E202191ABC6CB63820469360C96D618CCFC91BB6713CA04C2
+            3CD9A63BF94BBCBFD388B537E021CAA0B6732FB06A1DBCF59CEF58BAF623923B
+            9B31B0D84CC172A77E2B9A12CA7AF0F3EC895399F9B9D7DA95EE77D103217FFF
+            63CE99E96523506F895D351697871E23B734CC209535201CD427B9191B6E3D7A
+            2D25BF512813F8D6D3D59CCDD9E7C5C9FD4FC5C146DCA23E8C4547630D263247
+            D49B0D48CF41246639878FDFCBD2F1A5DE2200FE0157AD12700576ED12000000
+            0049454E44AE426082}
+          FileName = 
+            'E:\Datos de usuario\Documents\Embarcadero\Studio\Projects\YouTub' +
+            'e\Resources\open2.ico'
+        end>
+      Align = Center
+      Margins.Top = 2.000000000000000000
+      Size.Width = 25.000000000000000000
+      Size.Height = 20.000000000000000000
+      Size.PlatformDefault = False
+      WrapMode = Center
+      ParentShowHint = False
+      ShowHint = True
+      OnClick = Image1Click
+    end
+  end
+  object OpenDialog1: TOpenDialog
+    Left = 528
+    Top = 288
+  end
+  object Edit4: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 27
+    Position.X = 729.000000000000000000
+    Position.Y = 128.000000000000000000
+    Size.Width = 72.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+  end
+  object Memo1: TMemo
+    Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+    DataDetectorTypes = []
+    OnChange = Memo1Change
+    Position.X = 672.000000000000000000
+    Position.Y = 264.000000000000000000
+    Size.Width = 88.000000000000000000
+    Size.Height = 105.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 26
+    Viewport.Width = 76.000000000000000000
+    Viewport.Height = 97.000000000000000000
+  end
+  object CornerButton1: TCornerButton
+    Position.X = 472.000000000000000000
+    Position.Y = 518.000000000000000000
+    Sides = [Top, Left, Bottom, Right]
+    TabOrder = 31
+    Text = 'Stop Timer'
+    Visible = False
+    XRadius = 3.000000000000000000
+    YRadius = 3.000000000000000000
+    OnClick = CornerButton1Click
+  end
+end
